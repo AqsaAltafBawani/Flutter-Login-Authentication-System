@@ -1,71 +1,3 @@
-/*import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
-
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
-
-  void _login() async {
-    if (_formKey.currentState!.validate()) {
-      try {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim(),
-        );
-        Navigator.pushNamed(context, '/home');
-      } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("Error: ${e.toString()}"),
-        ));
-      }
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Login")),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                controller: _emailController,
-                decoration: const InputDecoration(labelText: "Email"),
-                validator: (value) => value!.isEmpty ? "Enter an email" : null,
-              ),
-              TextFormField(
-                controller: _passwordController,
-                decoration: const InputDecoration(labelText: "Password"),
-                obscureText: true,
-                validator: (value) => value!.isEmpty ? "Enter a password" : null,
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(onPressed: _login, child: const Text("Login")),
-              TextButton(
-                onPressed: () => Navigator.pushNamed(context, '/signup'),
-                child: const Text("Signup"),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-*/
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -108,9 +40,9 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header with title and subtitle
-              Center(
+              const Center(
                 child: Column(
-                  children: const [
+                  children: [
                     Icon(
                       Icons.login,
                       size: 80,
@@ -128,7 +60,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(height: 8),
                     Text(
                       "Login to continue",
-                      style: TextStyle(fontSize: 18, color: Color(0xFF607D8B)), // Grey-blue
+                      style: TextStyle(
+                          fontSize: 18, color: Color(0xFF607D8B)), // Grey-blue
                     ),
                   ],
                 ),
@@ -147,14 +80,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       decoration: InputDecoration(
                         labelText: "Email",
                         labelStyle: const TextStyle(color: Color(0xFF009688)),
-                        prefixIcon: const Icon(Icons.email, color: Color(0xFF009688)),
+                        prefixIcon:
+                            const Icon(Icons.email, color: Color(0xFF009688)),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(color: Color(0xFF009688)),
+                          borderSide:
+                              const BorderSide(color: Color(0xFF009688)),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(color: Color(0xFF00796B)),
+                          borderSide:
+                              const BorderSide(color: Color(0xFF00796B)),
                         ),
                       ),
                       validator: (value) =>
@@ -169,19 +105,21 @@ class _LoginScreenState extends State<LoginScreen> {
                       decoration: InputDecoration(
                         labelText: "Password",
                         labelStyle: const TextStyle(color: Color(0xFF009688)),
-                        prefixIcon: const Icon(Icons.lock, color: Color(0xFF009688)),
+                        prefixIcon:
+                            const Icon(Icons.lock, color: Color(0xFF009688)),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(color: Color(0xFF009688)),
+                          borderSide:
+                              const BorderSide(color: Color(0xFF009688)),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(color: Color(0xFF00796B)),
+                          borderSide:
+                              const BorderSide(color: Color(0xFF00796B)),
                         ),
                       ),
-                      validator: (value) => value!.isEmpty
-                          ? "Enter your password"
-                          : null,
+                      validator: (value) =>
+                          value!.isEmpty ? "Enter your password" : null,
                     ),
                     const SizedBox(height: 24),
 
@@ -202,6 +140,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 16),
+
+                    // Add this TextButton in the Login Screen's form after the "Login" button
+                    TextButton(
+                      onPressed: () =>
+                          Navigator.pushNamed(context, '/forget-password'),
+                      child: const Text(
+                        "Forgot Password?",
+                        style: TextStyle(color: Color(0xFF00796B)),
+                      ),
+                    ),
 
                     // Navigation to Signup Screen
                     TextButton(
