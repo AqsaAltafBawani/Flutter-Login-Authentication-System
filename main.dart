@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
+import "package:firebase_core/firebase_core.dart";
 import '_login_screen.dart';
 import '_home_page.dart';
 import '_signup_screen.dart';
+import 'ForgetPasswordScreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,10 +13,10 @@ Future<void> main() async {
   if (kIsWeb) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-        apiKey: "AIzaSyDlQlpLcmBrLgcX4AHid8O5gr7Z1aMXnKs",
-        appId: "1:416142349442:web:0019339edcdb8e32f1109b",
-        messagingSenderId: "416142349442",
-        projectId: "flutter-firebase-71430",
+        apiKey: "AIzaSyBsoki2KwQQ37-P2Z6Bu_YweEJN3rpb6S8",
+        appId: "1:759907693045:web:fc823bd0036c1cb30870bc",
+        messagingSenderId: "759907693045",
+        projectId: "forget-password-screen-ad3de",
       ),
     );
   } else {
@@ -34,7 +35,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Authentication System',
       theme: ThemeData(
-        // primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
           backgroundColor: Color.fromARGB(255, 55, 104, 0),
@@ -58,6 +58,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginScreen(),
         '/signup': (context) => const SignupScreen(),
         '/home': (context) => HomePage(),
+        '/forget-password': (context) => const ForgetPasswordScreen(),
       },
     );
   }
